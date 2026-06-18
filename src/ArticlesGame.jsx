@@ -289,10 +289,96 @@ function ColoredSentence({ text, phrase, gender }) {
   );
 }
 
+function PretzelIcon({ size = 64 }) {
+  return (
+    <svg width={size} height={Math.round(size * 1.12)} viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="32" cy="36" rx="30" ry="32" fill="#C07820" opacity="0.18"/>
+      {/* Left loop */}
+      <circle cx="21" cy="25" r="14" fill="none" stroke="#8B4513" strokeWidth="8.5"/>
+      {/* Right loop */}
+      <circle cx="43" cy="25" r="14" fill="none" stroke="#8B4513" strokeWidth="8.5"/>
+      {/* Bottom arch */}
+      <path d="M 10 35 C 6 48 8 58 15 66 C 19 70 25 72 32 72 C 39 72 45 70 49 66 C 56 58 58 48 54 35"
+            fill="none" stroke="#8B4513" strokeWidth="8.5" strokeLinecap="round"/>
+      {/* Cover to create woven crossing */}
+      <rect x="16" y="33" width="32" height="13" fill="#1C2128"/>
+      {/* Redraw left arm going over */}
+      <path d="M 10 35 C 14 39 17 42 21 43" fill="none" stroke="#8B4513" strokeWidth="8.5" strokeLinecap="round"/>
+      {/* Salt dots */}
+      <circle cx="11" cy="17" r="3" fill="#F5EFE0"/>
+      <circle cx="53" cy="17" r="3" fill="#F5EFE0"/>
+      <circle cx="20" cy="61" r="3" fill="#F5EFE0"/>
+      <circle cx="44" cy="61" r="3" fill="#F5EFE0"/>
+      <circle cx="32" cy="67" r="2.5" fill="#F5EFE0"/>
+    </svg>
+  );
+}
+
+function DirndlGirl() {
+  return (
+    <svg width="68" height="108" viewBox="0 0 68 108" xmlns="http://www.w3.org/2000/svg">
+      {/* Blonde braids */}
+      <circle cx="19" cy="15" r="8" fill="#C89018"/>
+      <circle cx="49" cy="15" r="8" fill="#C89018"/>
+      <ellipse cx="34" cy="10" rx="16" ry="9" fill="#C89018"/>
+      <path d="M 12 20 C 10 30 10 40 12 48" stroke="#A07010" strokeWidth="4" strokeLinecap="round" fill="none"/>
+      <path d="M 56 20 C 58 30 58 40 56 48" stroke="#A07010" strokeWidth="4" strokeLinecap="round" fill="none"/>
+      {/* Face */}
+      <ellipse cx="34" cy="20" rx="14" ry="15" fill="#F5CA90"/>
+      {/* Eyes */}
+      <circle cx="28" cy="19" r="2.5" fill="#2C1A00"/>
+      <circle cx="40" cy="19" r="2.5" fill="#2C1A00"/>
+      <circle cx="29" cy="18" r="1" fill="white"/>
+      <circle cx="41" cy="18" r="1" fill="white"/>
+      {/* Smile */}
+      <path d="M 28 27 C 31 31 37 31 40 27" fill="none" stroke="#B06050" strokeWidth="2" strokeLinecap="round"/>
+      {/* Cheeks */}
+      <circle cx="24" cy="24" r="4" fill="#F09080" opacity="0.38"/>
+      <circle cx="44" cy="24" r="4" fill="#F09080" opacity="0.38"/>
+      {/* Neck */}
+      <rect x="31" y="34" width="6" height="6" fill="#F5CA90"/>
+      {/* Puffed sleeves */}
+      <ellipse cx="11" cy="45" rx="9" ry="7.5" fill="white"/>
+      <ellipse cx="57" cy="45" rx="9" ry="7.5" fill="white"/>
+      {/* Blouse body */}
+      <path d="M 17 39 L 51 39 L 53 57 L 15 57 Z" fill="white"/>
+      {/* Bodice / Mieder */}
+      <path d="M 19 39 L 49 39 L 51 57 L 17 57 Z" fill="#1A3A78"/>
+      {/* Lacing detail */}
+      <line x1="34" y1="40" x2="34" y2="56" stroke="#F2B705" strokeWidth="1.5"/>
+      <line x1="27" y1="43" x2="41" y2="43" stroke="#F2B705" strokeWidth="1.5"/>
+      <line x1="27" y1="47" x2="41" y2="47" stroke="#F2B705" strokeWidth="1.5"/>
+      <line x1="27" y1="51" x2="41" y2="51" stroke="#F2B705" strokeWidth="1.5"/>
+      {/* Skirt */}
+      <path d="M 13 57 L 55 57 L 63 100 L 5 100 Z" fill="#1E6B3A"/>
+      <path d="M 7 93 L 61 93" stroke="#F2B705" strokeWidth="2" strokeLinecap="round" opacity="0.8"/>
+      {/* White apron */}
+      <path d="M 21 57 L 47 57 L 53 100 L 15 100 Z" fill="white" opacity="0.85"/>
+      {/* Apron bow at waist */}
+      <path d="M 21 57 C 17 60 16 65 20 66 C 24 67 25 61 21 57Z" fill="white"/>
+      <path d="M 47 57 C 51 60 52 65 48 66 C 44 67 43 61 47 57Z" fill="white"/>
+      <ellipse cx="34" cy="59" rx="4" ry="3" fill="white"/>
+      {/* Shoes */}
+      <ellipse cx="22" cy="103" rx="10" ry="4" fill="#3A1E08"/>
+      <ellipse cx="46" cy="103" rx="10" ry="4" fill="#3A1E08"/>
+      {/* Arms */}
+      <path d="M 11 45 L 5 65" stroke="white" strokeWidth="7" strokeLinecap="round"/>
+      <path d="M 57 45 L 63 65" stroke="white" strokeWidth="7" strokeLinecap="round"/>
+      {/* Hands */}
+      <circle cx="5" cy="67" r="5" fill="#F5CA90"/>
+      <circle cx="63" cy="67" r="5" fill="#F5CA90"/>
+    </svg>
+  );
+}
+
 export const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 .gda-root{ background:#1C2128; color:#F2EFE6; font-family:'Inter',sans-serif; border-radius:18px; padding:32px 22px; max-width:680px; margin:0 auto; }
+.gda-german-flag{ display:flex; height:11px; margin:-32px -22px 20px; border-radius:14px 14px 0 0; overflow:hidden; }
+.gda-flag-s{ flex:1; }
+.gda-hero-row{ display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:10px; }
+.gda-dirndl-wrap{ line-height:0; flex-shrink:0; }
 .gda-account-bar{ display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#9C9787; margin-bottom:14px; }
 .gda-link-btn{ background:none; border:none; color:#F2B705; text-decoration:underline; cursor:pointer; font-size:12px; padding:0; }
 .gda-auth-label{ display:block; font-size:11.5px; color:#5b574c; margin-bottom:6px; margin-top:14px; text-transform:uppercase; letter-spacing:0.5px; }
@@ -354,6 +440,8 @@ button:focus-visible{ outline:2px solid #F2B705; outline-offset:2px; }
   .gda-sign{ font-size:22px; padding:8px 18px; }
   .gda-card-noun{ font-size:26px; }
   .gda-card-sentence{ font-size:16px; }
+  .gda-dirndl-wrap{ display:none; }
+  .gda-hero-row{ gap:8px; }
 }
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; }
@@ -456,6 +544,11 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
 
   return (
     <div className="gda-root">
+      <div className="gda-german-flag">
+        <span className="gda-flag-s" style={{background:'#1A1A1A'}}/>
+        <span className="gda-flag-s" style={{background:'#CC0000'}}/>
+        <span className="gda-flag-s" style={{background:'#F2B705'}}/>
+      </div>
       <div className="gda-account-bar">
         <span>{userEmail}</span>
         <button className="gda-link-btn" onClick={onLogout}>
@@ -464,7 +557,11 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
       </div>
 
       <div className="gda-header">
-        <div className="gda-sign">DER · DIE · DAS</div>
+        <div className="gda-hero-row">
+          <PretzelIcon size={58}/>
+          <div className="gda-sign">DER · DIE · DAS</div>
+          <div className="gda-dirndl-wrap"><DirndlGirl/></div>
+        </div>
         <p className="gda-tagline">
           El artículo es parte de la palabra, no un accesorio. Cada sustantivo se aprende
           dentro de una frase real, nunca suelto.
