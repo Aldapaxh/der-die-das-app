@@ -374,7 +374,9 @@ function DirndlGirl() {
 export const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-.gda-root{ background:#1C2128; color:#F2EFE6; font-family:'Inter',sans-serif; border-radius:18px; padding:32px 22px; max-width:680px; margin:0 auto; }
+.gda-root{ background:#1C2128; color:#F2EFE6; font-family:'Inter',sans-serif; border-radius:18px; padding:32px 22px; max-width:680px; margin:0 auto;
+  background-image: repeating-linear-gradient(0deg, transparent 0px, transparent 29px, rgba(15,15,15,0.12) 29px, rgba(15,15,15,0.12) 30px, transparent 30px, transparent 59px, rgba(160,0,0,0.05) 59px, rgba(160,0,0,0.05) 60px, transparent 60px, transparent 89px, rgba(200,148,0,0.05) 89px, rgba(200,148,0,0.05) 90px);
+}
 .gda-german-flag{ display:flex; height:11px; margin:-32px -22px 20px; border-radius:14px 14px 0 0; overflow:hidden; }
 .gda-flag-s{ flex:1; }
 .gda-hero-row{ display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:10px; }
@@ -402,7 +404,7 @@ export const CSS = `
 .gda-mode-toggle{ display:flex; gap:8px; margin-bottom:16px; justify-content:center; }
 .gda-toggle-btn{ padding:7px 16px; border-radius:8px; border:1px solid rgba(255,255,255,0.18); background:transparent; color:#F2EFE6; cursor:pointer; font-size:13px; font-weight:600; }
 .gda-toggle-btn.active{ background:#F2EFE6; color:#1C2128; border-color:#F2EFE6; }
-.gda-card{ background:#F2EFE6; color:#1C2128; border-radius:16px; padding:30px 22px; min-height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border:5px solid var(--gender-color, #8a8576); position:relative; }
+.gda-card{ background-color:#F2EFE6; background-image: linear-gradient(135deg,rgba(0,80,160,0.055) 25%,transparent 25%), linear-gradient(225deg,rgba(0,80,160,0.055) 25%,transparent 25%), linear-gradient(315deg,rgba(0,80,160,0.055) 25%,transparent 25%), linear-gradient(45deg,rgba(0,80,160,0.055) 25%,transparent 25%); background-size:18px 18px; color:#1C2128; border-radius:16px; padding:30px 22px; min-height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border:5px solid var(--gender-color, #8a8576); position:relative; }
 .gda-card.clickable{ cursor:pointer; }
 .gda-card-noun{ font-family:'Oswald',sans-serif; font-weight:700; font-size:32px; letter-spacing:0.5px; }
 .gda-category-badge{ position:absolute; top:12px; right:12px; font-size:11px; padding:3px 9px; border-radius:6px; color:#fff; background:var(--cat-color,#8a8576); font-weight:600; letter-spacing:0.3px; }
