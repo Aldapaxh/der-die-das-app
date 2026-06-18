@@ -7,25 +7,72 @@ const COLORS = {
   das: { main: "#1F7A4D", label: "neutro" },
 };
 
+const CATEGORIES = {
+  casa:       { label: "🏠 Casa",       color: "#7C5CBF" },
+  comida:     { label: "🍎 Comida",     color: "#D4762A" },
+  ciudad:     { label: "🏙️ Ciudad",     color: "#2A7CA8" },
+  trabajo:    { label: "💼 Trabajo",    color: "#3A8A4A" },
+  naturaleza: { label: "🌿 Naturaleza", color: "#2A8A6A" },
+  personas:   { label: "👥 Personas",   color: "#A84A4A" },
+};
+
 const BASIC_WORDS = [
-  { id: "b1", article: "der", noun: "Tisch", sentence: "Der Tisch ist groß.", translation: "La mesa es grande." },
-  { id: "b2", article: "die", noun: "Tür", sentence: "Die Tür ist offen.", translation: "La puerta está abierta." },
-  { id: "b3", article: "das", noun: "Haus", sentence: "Das Haus ist groß.", translation: "La casa es grande." },
-  { id: "b4", article: "der", noun: "Hund", sentence: "Der Hund schläft.", translation: "El perro duerme." },
-  { id: "b5", article: "die", noun: "Katze", sentence: "Die Katze ist klein.", translation: "El gato es pequeño." },
-  { id: "b6", article: "das", noun: "Auto", sentence: "Das Auto ist neu.", translation: "El coche es nuevo." },
-  { id: "b7", article: "der", noun: "Mann", sentence: "Der Mann arbeitet viel.", translation: "El hombre trabaja mucho." },
-  { id: "b8", article: "die", noun: "Frau", sentence: "Die Frau liest ein Buch.", translation: "La mujer lee un libro." },
-  { id: "b9", article: "das", noun: "Kind", sentence: "Das Kind spielt im Garten.", translation: "El niño juega en el jardín." },
-  { id: "b10", article: "der", noun: "Stuhl", sentence: "Der Stuhl ist kaputt.", translation: "La silla está rota." },
-  { id: "b11", article: "die", noun: "Lampe", sentence: "Die Lampe ist sehr hell.", translation: "La lámpara es muy brillante." },
-  { id: "b12", article: "das", noun: "Buch", sentence: "Das Buch ist interessant.", translation: "El libro es interesante." },
-  { id: "b13", article: "der", noun: "Apfel", sentence: "Der Apfel ist rot.", translation: "La manzana es roja." },
-  { id: "b14", article: "die", noun: "Banane", sentence: "Die Banane ist gelb.", translation: "El plátano es amarillo." },
-  { id: "b15", article: "das", noun: "Brot", sentence: "Das Brot ist frisch.", translation: "El pan es fresco." },
-  { id: "b16", article: "der", noun: "Garten", sentence: "Der Garten ist sehr schön.", translation: "El jardín es muy bonito." },
-  { id: "b17", article: "die", noun: "Straße", sentence: "Die Straße ist lang.", translation: "La calle es larga." },
-  { id: "b18", article: "das", noun: "Fenster", sentence: "Das Fenster ist offen.", translation: "La ventana está abierta." },
+  // 🏠 Casa
+  { id: "b1",  article: "der", noun: "Tisch",       category: "casa",       sentence: "Der Tisch ist sehr groß.",         translation: "La mesa es muy grande." },
+  { id: "b2",  article: "die", noun: "Tür",          category: "casa",       sentence: "Die Tür ist offen.",               translation: "La puerta está abierta." },
+  { id: "b3",  article: "das", noun: "Haus",         category: "casa",       sentence: "Das Haus ist groß.",               translation: "La casa es grande." },
+  { id: "b4",  article: "das", noun: "Fenster",      category: "casa",       sentence: "Das Fenster ist kaputt.",          translation: "La ventana está rota." },
+  { id: "b5",  article: "die", noun: "Lampe",        category: "casa",       sentence: "Die Lampe ist sehr hell.",         translation: "La lámpara es muy brillante." },
+  { id: "b6",  article: "der", noun: "Stuhl",        category: "casa",       sentence: "Der Stuhl ist kaputt.",            translation: "La silla está rota." },
+  { id: "b7",  article: "das", noun: "Bett",         category: "casa",       sentence: "Das Bett ist sehr bequem.",        translation: "La cama es muy cómoda." },
+  { id: "b8",  article: "die", noun: "Küche",        category: "casa",       sentence: "Die Küche ist modern.",            translation: "La cocina es moderna." },
+  { id: "b9",  article: "das", noun: "Bad",          category: "casa",       sentence: "Das Bad ist klein.",               translation: "El baño es pequeño." },
+  { id: "b10", article: "die", noun: "Wohnung",      category: "casa",       sentence: "Die Wohnung ist teuer.",           translation: "El piso es caro." },
+  // 🍎 Comida
+  { id: "b11", article: "der", noun: "Apfel",        category: "comida",     sentence: "Der Apfel ist rot.",               translation: "La manzana es roja." },
+  { id: "b12", article: "die", noun: "Banane",       category: "comida",     sentence: "Die Banane ist gelb.",             translation: "El plátano es amarillo." },
+  { id: "b13", article: "das", noun: "Brot",         category: "comida",     sentence: "Das Brot ist frisch.",             translation: "El pan es fresco." },
+  { id: "b14", article: "die", noun: "Milch",        category: "comida",     sentence: "Die Milch ist kalt.",              translation: "La leche está fría." },
+  { id: "b15", article: "der", noun: "Käse",         category: "comida",     sentence: "Der Käse ist lecker.",             translation: "El queso está rico." },
+  { id: "b16", article: "das", noun: "Ei",           category: "comida",     sentence: "Das Ei ist frisch.",               translation: "El huevo está fresco." },
+  { id: "b17", article: "der", noun: "Kuchen",       category: "comida",     sentence: "Der Kuchen schmeckt gut.",         translation: "El pastel sabe bien." },
+  { id: "b18", article: "die", noun: "Suppe",        category: "comida",     sentence: "Die Suppe ist heiß.",              translation: "La sopa está caliente." },
+  { id: "b19", article: "das", noun: "Fleisch",      category: "comida",     sentence: "Das Fleisch ist zart.",            translation: "La carne está tierna." },
+  { id: "b20", article: "der", noun: "Wein",         category: "comida",     sentence: "Der Wein ist sehr gut.",           translation: "El vino está muy bueno." },
+  // 🏙️ Ciudad
+  { id: "b21", article: "die", noun: "Straße",       category: "ciudad",     sentence: "Die Straße ist sehr lang.",        translation: "La calle es muy larga." },
+  { id: "b22", article: "der", noun: "Bahnhof",      category: "ciudad",     sentence: "Der Bahnhof ist groß.",            translation: "La estación es grande." },
+  { id: "b23", article: "das", noun: "Geschäft",     category: "ciudad",     sentence: "Das Geschäft ist geschlossen.",    translation: "La tienda está cerrada." },
+  { id: "b24", article: "die", noun: "Kirche",       category: "ciudad",     sentence: "Die Kirche ist sehr alt.",         translation: "La iglesia es muy antigua." },
+  { id: "b25", article: "der", noun: "Park",         category: "ciudad",     sentence: "Der Park ist sehr schön.",         translation: "El parque es muy bonito." },
+  { id: "b26", article: "das", noun: "Restaurant",   category: "ciudad",     sentence: "Das Restaurant ist teuer.",        translation: "El restaurante es caro." },
+  { id: "b27", article: "die", noun: "Bank",         category: "ciudad",     sentence: "Die Bank ist geöffnet.",           translation: "El banco está abierto." },
+  { id: "b28", article: "der", noun: "Markt",        category: "ciudad",     sentence: "Der Markt ist sehr bunt.",         translation: "El mercado es muy colorido." },
+  { id: "b29", article: "das", noun: "Krankenhaus",  category: "ciudad",     sentence: "Das Krankenhaus ist modern.",      translation: "El hospital es moderno." },
+  { id: "b30", article: "die", noun: "Schule",       category: "ciudad",     sentence: "Die Schule ist sehr groß.",        translation: "La escuela es muy grande." },
+  // 💼 Trabajo
+  { id: "b31", article: "der", noun: "Chef",         category: "trabajo",    sentence: "Der Chef ist sehr streng.",        translation: "El jefe es muy estricto." },
+  { id: "b32", article: "die", noun: "Arbeit",       category: "trabajo",    sentence: "Die Arbeit ist schwer.",           translation: "El trabajo es duro." },
+  { id: "b33", article: "das", noun: "Büro",         category: "trabajo",    sentence: "Das Büro ist modern.",             translation: "La oficina es moderna." },
+  { id: "b34", article: "der", noun: "Computer",     category: "trabajo",    sentence: "Der Computer ist neu.",            translation: "El ordenador es nuevo." },
+  { id: "b35", article: "die", noun: "Besprechung",  category: "trabajo",    sentence: "Die Besprechung ist lang.",        translation: "La reunión es larga." },
+  { id: "b36", article: "das", noun: "Gehalt",       category: "trabajo",    sentence: "Das Gehalt ist gut.",              translation: "El sueldo está bien." },
+  { id: "b37", article: "der", noun: "Kollege",      category: "trabajo",    sentence: "Der Kollege ist sehr nett.",       translation: "El compañero es muy simpático." },
+  { id: "b38", article: "die", noun: "Firma",        category: "trabajo",    sentence: "Die Firma ist bekannt.",           translation: "La empresa es conocida." },
+  { id: "b39", article: "das", noun: "Projekt",      category: "trabajo",    sentence: "Das Projekt ist fertig.",          translation: "El proyecto está terminado." },
+  { id: "b40", article: "der", noun: "Urlaub",       category: "trabajo",    sentence: "Der Urlaub ist sehr schön.",       translation: "Las vacaciones son muy bonitas." },
+  // 🌿 Naturaleza
+  { id: "b41", article: "der", noun: "Baum",         category: "naturaleza", sentence: "Der Baum ist sehr hoch.",          translation: "El árbol es muy alto." },
+  { id: "b42", article: "die", noun: "Blume",        category: "naturaleza", sentence: "Die Blume ist sehr schön.",        translation: "La flor es muy bonita." },
+  { id: "b43", article: "das", noun: "Wasser",       category: "naturaleza", sentence: "Das Wasser ist kalt.",             translation: "El agua está fría." },
+  { id: "b44", article: "der", noun: "Berg",         category: "naturaleza", sentence: "Der Berg ist sehr hoch.",          translation: "La montaña es muy alta." },
+  { id: "b45", article: "die", noun: "Sonne",        category: "naturaleza", sentence: "Die Sonne scheint heute.",         translation: "El sol brilla hoy." },
+  // 👥 Personas
+  { id: "b46", article: "der", noun: "Mann",         category: "personas",   sentence: "Der Mann arbeitet viel.",          translation: "El hombre trabaja mucho." },
+  { id: "b47", article: "die", noun: "Frau",         category: "personas",   sentence: "Die Frau liest ein Buch.",         translation: "La mujer lee un libro." },
+  { id: "b48", article: "das", noun: "Kind",         category: "personas",   sentence: "Das Kind spielt im Garten.",       translation: "El niño juega en el jardín." },
+  { id: "b49", article: "der", noun: "Hund",         category: "personas",   sentence: "Der Hund schläft.",                translation: "El perro duerme." },
+  { id: "b50", article: "die", noun: "Katze",        category: "personas",   sentence: "Die Katze ist klein.",             translation: "El gato es pequeño." },
 ];
 
 const CASE_INFO = {
@@ -37,51 +84,126 @@ const CASE_INFO = {
 const CASE_ORDER = ["Nominativ", "Akkusativ", "Dativ", "Genitiv"];
 
 const CASE_WORDS = [
-  {
-    id: "c1", noun: "Tisch", gender: "der",
-    cases: {
-      Nominativ: { phrase: "der Tisch", template: "___ ist alt.", translation: "La mesa es vieja." },
-      Akkusativ: { phrase: "den Tisch", template: "Ich kaufe ___.", translation: "Compro la mesa." },
-      Dativ: { phrase: "dem Tisch", template: "Die Katze sitzt unter ___.", translation: "El gato está debajo de la mesa." },
-      Genitiv: { phrase: "des Tisches", template: "Die Farbe ___ ist braun.", translation: "El color de la mesa es marrón." },
-    },
-  },
-  {
-    id: "c2", noun: "Tür", gender: "die",
-    cases: {
-      Nominativ: { phrase: "die Tür", template: "___ ist offen.", translation: "La puerta está abierta." },
-      Akkusativ: { phrase: "die Tür", template: "Ich öffne ___.", translation: "Abro la puerta." },
-      Dativ: { phrase: "der Tür", template: "Ich stehe vor ___.", translation: "Estoy delante de la puerta." },
-      Genitiv: { phrase: "der Tür", template: "Der Griff ___ ist kaputt.", translation: "El pomo de la puerta está roto." },
-    },
-  },
-  {
-    id: "c3", noun: "Haus", gender: "das",
-    cases: {
-      Nominativ: { phrase: "das Haus", template: "___ ist groß.", translation: "La casa es grande." },
-      Akkusativ: { phrase: "das Haus", template: "Wir kaufen ___.", translation: "Compramos la casa." },
-      Dativ: { phrase: "dem Haus", template: "Wir wohnen in ___.", translation: "Vivimos en la casa." },
-      Genitiv: { phrase: "des Hauses", template: "Das Dach ___ ist rot.", translation: "El tejado de la casa es rojo." },
-    },
-  },
-  {
-    id: "c4", noun: "Hund", gender: "der",
-    cases: {
-      Nominativ: { phrase: "der Hund", template: "___ läuft schnell.", translation: "El perro corre rápido." },
-      Akkusativ: { phrase: "den Hund", template: "Ich sehe ___.", translation: "Veo al perro." },
-      Dativ: { phrase: "dem Hund", template: "Ich gebe ___ einen Ball.", translation: "Le doy una pelota al perro." },
-      Genitiv: { phrase: "des Hundes", template: "Die Leine ___ ist neu.", translation: "La correa del perro es nueva." },
-    },
-  },
-  {
-    id: "c5", noun: "Frau", gender: "die",
-    cases: {
-      Nominativ: { phrase: "die Frau", template: "___ singt sehr gut.", translation: "La mujer canta muy bien." },
-      Akkusativ: { phrase: "die Frau", template: "Ich kenne ___.", translation: "Conozco a la mujer." },
-      Dativ: { phrase: "der Frau", template: "Ich helfe ___.", translation: "Ayudo a la mujer." },
-      Genitiv: { phrase: "der Frau", template: "Das Auto ___ ist rot.", translation: "El coche de la mujer es rojo." },
-    },
-  },
+  { id: "c1",  noun: "Mann",      gender: "der", cases: {
+    Nominativ: { phrase: "der Mann",      template: "___ arbeitet viel.",                 translation: "El hombre trabaja mucho." },
+    Akkusativ: { phrase: "den Mann",      template: "Ich kenne ___.",                     translation: "Conozco al hombre." },
+    Dativ:     { phrase: "dem Mann",      template: "Ich helfe ___.",                     translation: "Ayudo al hombre." },
+    Genitiv:   { phrase: "des Mannes",    template: "Das Auto ___ ist alt.",              translation: "El coche del hombre es viejo." },
+  }},
+  { id: "c2",  noun: "Hund",      gender: "der", cases: {
+    Nominativ: { phrase: "der Hund",      template: "___ läuft schnell.",                 translation: "El perro corre rápido." },
+    Akkusativ: { phrase: "den Hund",      template: "Ich sehe ___.",                      translation: "Veo al perro." },
+    Dativ:     { phrase: "dem Hund",      template: "Ich gebe ___ einen Ball.",           translation: "Le doy una pelota al perro." },
+    Genitiv:   { phrase: "des Hundes",    template: "Die Leine ___ ist neu.",             translation: "La correa del perro es nueva." },
+  }},
+  { id: "c3",  noun: "Vater",     gender: "der", cases: {
+    Nominativ: { phrase: "der Vater",     template: "___ kocht heute.",                   translation: "El padre cocina hoy." },
+    Akkusativ: { phrase: "den Vater",     template: "Ich besuche ___.",                   translation: "Visito al padre." },
+    Dativ:     { phrase: "dem Vater",     template: "Das Buch gehört ___.",               translation: "El libro pertenece al padre." },
+    Genitiv:   { phrase: "des Vaters",    template: "Das Hemd ___ ist blau.",             translation: "La camisa del padre es azul." },
+  }},
+  { id: "c4",  noun: "Lehrer",    gender: "der", cases: {
+    Nominativ: { phrase: "der Lehrer",    template: "___ erklärt die Aufgabe.",           translation: "El profesor explica el ejercicio." },
+    Akkusativ: { phrase: "den Lehrer",    template: "Die Schüler sehen ___.",             translation: "Los alumnos ven al profesor." },
+    Dativ:     { phrase: "dem Lehrer",    template: "Das Kind gibt ___ ein Heft.",        translation: "El niño le da un cuaderno al profesor." },
+    Genitiv:   { phrase: "des Lehrers",   template: "Das Buch ___ ist dick.",             translation: "El libro del profesor es grueso." },
+  }},
+  { id: "c5",  noun: "Freund",    gender: "der", cases: {
+    Nominativ: { phrase: "der Freund",    template: "___ kommt heute.",                   translation: "El amigo viene hoy." },
+    Akkusativ: { phrase: "den Freund",    template: "Ich treffe ___ im Park.",            translation: "Quedo con el amigo en el parque." },
+    Dativ:     { phrase: "dem Freund",    template: "Ich schreibe ___ eine Nachricht.",   translation: "Le escribo un mensaje al amigo." },
+    Genitiv:   { phrase: "des Freundes",  template: "Das Fahrrad ___ ist neu.",           translation: "La bici del amigo es nueva." },
+  }},
+  { id: "c6",  noun: "Zug",       gender: "der", cases: {
+    Nominativ: { phrase: "der Zug",       template: "___ ist pünktlich.",                 translation: "El tren es puntual." },
+    Akkusativ: { phrase: "den Zug",       template: "Ich nehme ___.",                     translation: "Tomo el tren." },
+    Dativ:     { phrase: "dem Zug",       template: "Ich warte auf ___.",                 translation: "Espero el tren." },
+    Genitiv:   { phrase: "des Zuges",     template: "Die Türen ___ sind offen.",          translation: "Las puertas del tren están abiertas." },
+  }},
+  { id: "c7",  noun: "Brief",     gender: "der", cases: {
+    Nominativ: { phrase: "der Brief",     template: "___ ist lang.",                      translation: "La carta es larga." },
+    Akkusativ: { phrase: "den Brief",     template: "Ich schreibe ___.",                  translation: "Escribo la carta." },
+    Dativ:     { phrase: "dem Brief",     template: "Ich antworte auf ___.",              translation: "Respondo a la carta." },
+    Genitiv:   { phrase: "des Briefes",   template: "Der Inhalt ___ ist wichtig.",        translation: "El contenido de la carta es importante." },
+  }},
+  { id: "c8",  noun: "Frau",      gender: "die", cases: {
+    Nominativ: { phrase: "die Frau",      template: "___ singt sehr gut.",                translation: "La mujer canta muy bien." },
+    Akkusativ: { phrase: "die Frau",      template: "Ich kenne ___.",                     translation: "Conozco a la mujer." },
+    Dativ:     { phrase: "der Frau",      template: "Ich helfe ___.",                     translation: "Ayudo a la mujer." },
+    Genitiv:   { phrase: "der Frau",      template: "Das Auto ___ ist rot.",              translation: "El coche de la mujer es rojo." },
+  }},
+  { id: "c9",  noun: "Mutter",    gender: "die", cases: {
+    Nominativ: { phrase: "die Mutter",    template: "___ kocht sehr gut.",                translation: "La madre cocina muy bien." },
+    Akkusativ: { phrase: "die Mutter",    template: "Ich besuche ___.",                   translation: "Visito a la madre." },
+    Dativ:     { phrase: "der Mutter",    template: "Ich gebe ___ die Blumen.",           translation: "Le doy las flores a la madre." },
+    Genitiv:   { phrase: "der Mutter",    template: "Das Kleid ___ ist schön.",           translation: "El vestido de la madre es bonito." },
+  }},
+  { id: "c10", noun: "Lehrerin",  gender: "die", cases: {
+    Nominativ: { phrase: "die Lehrerin",  template: "___ erklärt das Wort.",              translation: "La profesora explica la palabra." },
+    Akkusativ: { phrase: "die Lehrerin",  template: "Die Schüler mögen ___.",             translation: "Los alumnos quieren a la profesora." },
+    Dativ:     { phrase: "der Lehrerin",  template: "Das Kind gibt ___ ein Buch.",        translation: "El niño le da un libro a la profesora." },
+    Genitiv:   { phrase: "der Lehrerin",  template: "Der Tisch ___ ist groß.",            translation: "La mesa de la profesora es grande." },
+  }},
+  { id: "c11", noun: "Stadt",     gender: "die", cases: {
+    Nominativ: { phrase: "die Stadt",     template: "___ ist sehr schön.",                translation: "La ciudad es muy bonita." },
+    Akkusativ: { phrase: "die Stadt",     template: "Ich besuche ___.",                   translation: "Visito la ciudad." },
+    Dativ:     { phrase: "der Stadt",     template: "Wir wohnen in ___.",                 translation: "Vivimos en la ciudad." },
+    Genitiv:   { phrase: "der Stadt",     template: "Das Zentrum ___ ist groß.",          translation: "El centro de la ciudad es grande." },
+  }},
+  { id: "c12", noun: "Schule",    gender: "die", cases: {
+    Nominativ: { phrase: "die Schule",    template: "___ ist sehr groß.",                 translation: "La escuela es muy grande." },
+    Akkusativ: { phrase: "die Schule",    template: "Das Kind geht in ___.",              translation: "El niño va a la escuela." },
+    Dativ:     { phrase: "der Schule",    template: "Wir treffen uns vor ___.",           translation: "Nos encontramos delante de la escuela." },
+    Genitiv:   { phrase: "der Schule",    template: "Der Direktor ___ ist nett.",         translation: "El director de la escuela es simpático." },
+  }},
+  { id: "c13", noun: "Katze",     gender: "die", cases: {
+    Nominativ: { phrase: "die Katze",     template: "___ schläft viel.",                  translation: "La gata duerme mucho." },
+    Akkusativ: { phrase: "die Katze",     template: "Ich sehe ___.",                      translation: "Veo a la gata." },
+    Dativ:     { phrase: "der Katze",     template: "Ich gebe ___ Milch.",                translation: "Le doy leche a la gata." },
+    Genitiv:   { phrase: "der Katze",     template: "Das Futter ___ ist teuer.",          translation: "La comida de la gata es cara." },
+  }},
+  { id: "c14", noun: "Zeitung",   gender: "die", cases: {
+    Nominativ: { phrase: "die Zeitung",   template: "___ ist auf dem Tisch.",             translation: "El periódico está en la mesa." },
+    Akkusativ: { phrase: "die Zeitung",   template: "Ich lese ___.",                      translation: "Leo el periódico." },
+    Dativ:     { phrase: "der Zeitung",   template: "Ich suche in ___.",                  translation: "Busco en el periódico." },
+    Genitiv:   { phrase: "der Zeitung",   template: "Der Artikel ___ ist interessant.",   translation: "El artículo del periódico es interesante." },
+  }},
+  { id: "c15", noun: "Kind",      gender: "das", cases: {
+    Nominativ: { phrase: "das Kind",      template: "___ spielt im Park.",                translation: "El niño juega en el parque." },
+    Akkusativ: { phrase: "das Kind",      template: "Ich sehe ___.",                      translation: "Veo al niño." },
+    Dativ:     { phrase: "dem Kind",      template: "Ich gebe ___ ein Buch.",             translation: "Le doy un libro al niño." },
+    Genitiv:   { phrase: "des Kindes",    template: "Das Spielzeug ___ ist neu.",         translation: "El juguete del niño es nuevo." },
+  }},
+  { id: "c16", noun: "Haus",      gender: "das", cases: {
+    Nominativ: { phrase: "das Haus",      template: "___ ist groß.",                      translation: "La casa es grande." },
+    Akkusativ: { phrase: "das Haus",      template: "Wir kaufen ___.",                    translation: "Compramos la casa." },
+    Dativ:     { phrase: "dem Haus",      template: "Wir wohnen in ___.",                 translation: "Vivimos en la casa." },
+    Genitiv:   { phrase: "des Hauses",    template: "Das Dach ___ ist rot.",              translation: "El tejado de la casa es rojo." },
+  }},
+  { id: "c17", noun: "Auto",      gender: "das", cases: {
+    Nominativ: { phrase: "das Auto",      template: "___ ist neu.",                       translation: "El coche es nuevo." },
+    Akkusativ: { phrase: "das Auto",      template: "Ich kaufe ___.",                     translation: "Compro el coche." },
+    Dativ:     { phrase: "dem Auto",      template: "Ich fahre mit ___.",                 translation: "Voy en el coche." },
+    Genitiv:   { phrase: "des Autos",     template: "Der Motor ___ ist kaputt.",          translation: "El motor del coche está roto." },
+  }},
+  { id: "c18", noun: "Buch",      gender: "das", cases: {
+    Nominativ: { phrase: "das Buch",      template: "___ ist interessant.",               translation: "El libro es interesante." },
+    Akkusativ: { phrase: "das Buch",      template: "Ich lese ___.",                      translation: "Leo el libro." },
+    Dativ:     { phrase: "dem Buch",      template: "Ich lerne aus ___.",                 translation: "Aprendo del libro." },
+    Genitiv:   { phrase: "des Buches",    template: "Der Autor ___ ist bekannt.",         translation: "El autor del libro es conocido." },
+  }},
+  { id: "c19", noun: "Fahrrad",   gender: "das", cases: {
+    Nominativ: { phrase: "das Fahrrad",   template: "___ ist kaputt.",                    translation: "La bicicleta está rota." },
+    Akkusativ: { phrase: "das Fahrrad",   template: "Ich nehme ___.",                     translation: "Cojo la bicicleta." },
+    Dativ:     { phrase: "dem Fahrrad",   template: "Ich fahre mit ___.",                 translation: "Voy en bicicleta." },
+    Genitiv:   { phrase: "des Fahrrads",  template: "Das Rad ___ ist platt.",             translation: "La rueda de la bicicleta está pinchada." },
+  }},
+  { id: "c20", noun: "Wasser",    gender: "das", cases: {
+    Nominativ: { phrase: "das Wasser",    template: "___ ist kalt.",                      translation: "El agua está fría." },
+    Akkusativ: { phrase: "das Wasser",    template: "Ich trinke ___.",                    translation: "Bebo el agua." },
+    Dativ:     { phrase: "dem Wasser",    template: "Das Salz löst sich in ___.",         translation: "La sal se disuelve en el agua." },
+    Genitiv:   { phrase: "des Wassers",   template: "Die Temperatur ___ ist niedrig.",    translation: "La temperatura del agua es baja." },
+  }},
 ];
 
 const TIPS = [
@@ -197,6 +319,7 @@ export const CSS = `
 .gda-card{ background:#F2EFE6; color:#1C2128; border-radius:16px; padding:30px 22px; min-height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border:5px solid var(--gender-color, #8a8576); position:relative; }
 .gda-card.clickable{ cursor:pointer; }
 .gda-card-noun{ font-family:'Oswald',sans-serif; font-weight:700; font-size:32px; letter-spacing:0.5px; }
+.gda-category-badge{ position:absolute; top:12px; right:12px; font-size:11px; padding:3px 9px; border-radius:6px; color:#fff; background:var(--cat-color,#8a8576); font-weight:600; letter-spacing:0.3px; }
 .gda-card-article-badge{ position:absolute; top:12px; left:12px; font-family:'Oswald',sans-serif; font-weight:700; font-size:12px; letter-spacing:1px; padding:4px 10px; border-radius:6px; color:#fff; background:var(--gender-color, #1C2128); }
 .gda-card-sentence{ font-size:18px; font-weight:600; line-height:1.4; max-width:420px; }
 .gda-card-translation{ font-size:13.5px; color:#5b574c; margin-top:10px; font-style:italic; }
@@ -410,6 +533,9 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
               onClick={() => setFlipped((f) => !f)}
             >
               {flipped && <span className="gda-card-article-badge">{basicWord.article}</span>}
+              <span className="gda-category-badge" style={{ "--cat-color": CATEGORIES[basicWord.category].color }}>
+                {CATEGORIES[basicWord.category].label}
+              </span>
               {!flipped ? (
                 <>
                   <div className="gda-card-noun">{basicWord.noun}</div>
@@ -431,6 +557,9 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
             </div>
           ) : (
             <div className="gda-card" style={{ "--gender-color": basicAnswer ? COLORS[basicWord.article].main : undefined }}>
+              <span className="gda-category-badge" style={{ "--cat-color": CATEGORIES[basicWord.category].color }}>
+                {CATEGORIES[basicWord.category].label}
+              </span>
               <div className="gda-card-sentence">
                 {basicAnswer ? (
                   <ColoredSentence
