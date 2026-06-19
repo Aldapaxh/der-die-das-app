@@ -1,0 +1,17 @@
+{
+  "name": "Der, Die, Das · Aprende los artículos alemanes",
+  "short_name": "Der Die Das",
+  "description": "Aprende los géneros y casos del alemán con tarjetas y frases en contexto, no con listas sueltas.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1C2128",
+  "theme_color": "#1C2128",
+  "lang": "es",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
