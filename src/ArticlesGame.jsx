@@ -374,7 +374,7 @@ function DirndlGirl() {
 export const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-.gda-root{ background:#1C2128; color:#F2EFE6; font-family:'Inter',sans-serif; border-radius:18px; padding:32px 22px; max-width:680px; margin:0 auto;
+.gda-root{ background:#1C2128; color:#F2EFE6; font-family:'Inter',sans-serif; border-radius:18px; padding:32px 22px; max-width:680px; margin:0 auto; position:relative; isolation:isolate;
   background-image: repeating-linear-gradient(0deg, transparent 0px, transparent 29px, rgba(15,15,15,0.12) 29px, rgba(15,15,15,0.12) 30px, transparent 30px, transparent 59px, rgba(160,0,0,0.05) 59px, rgba(160,0,0,0.05) 60px, transparent 60px, transparent 89px, rgba(200,148,0,0.05) 89px, rgba(200,148,0,0.05) 90px);
 }
 .gda-german-flag{ display:flex; height:11px; margin:-32px -22px 20px; border-radius:14px 14px 0 0; overflow:hidden; }
