@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Lock, ChevronRight, Table2 } from "lucide-react";
 
 const COLORS = {
@@ -1146,6 +1146,30 @@ function ColoredSentence({ text, phrase, gender }) {
   );
 }
 
+function AdBanner() {
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      // El bloqueador de anuncios o un fallo de carga no debe romper la app
+    }
+  }, []);
+
+  return (
+    <div className="gda-ad-wrap">
+      <span className="gda-ad-label">Publicidad</span>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-1984499334892529"
+        data-ad-slot="7181561991"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    </div>
+  );
+}
+
 function PretzelIcon({ size = 64 }) {
   return (
     <svg width={size} height={Math.round(size * 1.12)} viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg">
@@ -1287,6 +1311,8 @@ export const CSS = `
 .gda-next-btn{ display:flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.22); color:#F2EFE6; padding:8px 16px; border-radius:8px; cursor:pointer; font-size:12.5px; font-weight:600; }
 .gda-next-btn:hover{ background:rgba(255,255,255,0.06); }
 .gda-stats{ display:flex; justify-content:center; gap:26px; margin-top:26px; }
+.gda-ad-wrap{ margin-top:24px; padding-top:16px; border-top:1px dashed rgba(255,255,255,0.12); text-align:center; min-height:90px; }
+.gda-ad-label{ display:block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#6b6760; margin-bottom:8px; }
 .gda-stat{ text-align:center; }
 .gda-stat-value{ font-family:'Oswald',sans-serif; font-size:20px; font-weight:700; font-variant-numeric:tabular-nums; }
 .gda-stat-label{ font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#9C9787; margin-top:2px; }
@@ -1587,6 +1613,8 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
               <div className="gda-stat-label">Tarjeta</div>
             </div>
           </div>
+
+          <AdBanner />
         </>
       )}
 
