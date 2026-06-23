@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.aldapaxh.derdiedas",
+        "sha256_cert_fingerprints": ["D8:3F:A8:DF:87:09:47:B4:AB:1E:22:F0:73:74:74:6E:27:BD:9C:CC:DF:D6:91:47:B3:B7:F8:4E:78:C8:CF:2D"]
+      }
+    }]
