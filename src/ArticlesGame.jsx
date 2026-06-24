@@ -1613,8 +1613,6 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
               <div className="gda-stat-label">Tarjeta</div>
             </div>
           </div>
-
-          <AdBanner />
         </>
       )}
 
