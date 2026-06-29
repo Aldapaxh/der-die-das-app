@@ -1,0 +1,17 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # todos los dias a las 08:00 UTC
+  workflow_dispatch: {}    # permite lanzarlo a mano desde GitHub si hace falta
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hacer una consulta minima a Supabase para mantener el proyecto activo
+        run: |
+          curl -s -o /dev/null -w "Respuesta de Supabase: %{http_code}\n" \
+            "https://kenakpfiaystsznheylt.supabase.co/rest/v1/profiles?select=id&limit=1" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtlbmFrcGZpYXlzdHN6bmhleWx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2OTYwOTIsImV4cCI6MjA5NzI3MjA5Mn0.ZIuuj4qgTedAIoJ8_XRDGaAvtwDnaFtTR0KBNjUC-HU" \
+            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtlbmFrcGZpYXlzdHN6bmhleWx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2OTYwOTIsImV4cCI6MjA5NzI3MjA5Mn0.ZIuuj4qgTedAIoJ8_XRDGaAvtwDnaFtTR0KBNjUC-HU"
