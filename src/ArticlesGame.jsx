@@ -1706,7 +1706,7 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
                   <tr key={c}>
                     <td>{c}</td>
                     <td style={{ color: COLORS[currentCaseWord.gender].main, fontWeight: 700 }}>
-                      {currentCaseWord.cases[c].phrase}
+                      <ColoredSentence text={fillSentence(currentCaseWord.cases[c].template, currentCaseWord.cases[c].phrase)} phrase={getInsertedPhrase(currentCaseWord.cases[c].template, currentCaseWord.cases[c].phrase)} gender={currentCaseWord.gender} />
                     </td>
                     <td>{currentCaseWord.cases[c].translation}</td>
                   </tr>
