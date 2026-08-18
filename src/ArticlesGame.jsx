@@ -1337,8 +1337,24 @@ button:focus-visible{ outline:2px solid #F2B705; outline-offset:2px; }
 }
 `;
 
-export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
+export default function ArticlesGame({ isPremium, userEmail, userId, onLogout, onRefreshPremium }) {
   const [level, setLevel] = useState("basico");
+  const [paymentPending, setPaymentPending] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('payment') === 'success') {
+      window.history.replaceState({}, '', window.location.pathname);
+      setPaymentPending(true);
+      setLevel('casos');
+      let attempts = 0;
+      const poll = setInterval(async () => {
+        attempts++;
+        if (onRefreshPremium) await onRefreshPremium();
+        if (attempts >= 20) { clearInterval(poll); setPaymentPending(false); }
+      }, 2000);
+    }
+  }, []);
 
   const [basicMode, setBasicMode] = useState("tarjeta");
   const [basicOrder, setBasicOrder] = useState(() => shuffle(BASIC_WORDS));
@@ -1475,16 +1491,61 @@ export default function ArticlesGame({ isPremium, userEmail, onLogout }) {
         </button>
       </div>
 
-      {level === "casos" && !isPremium && (
+{level === "casos" && !isPremium && (
         <div className="gda-paywall">
-          <p style={{ marginBottom: 12, fontSize: 14, lineHeight: 1.5 }}>
-            Este nivel enseña cómo cambia el artículo según la función de la palabra en la
-            frase: der → den → dem → des. Es el contenido completo, de pago.
-          </p>
-          <p style={{ fontSize: 13, color: "#9C9787" }}>
-            Tu cuenta todavía no tiene acceso premium. Muy pronto podrás activarlo desde aquí
-            mismo con una compra única o suscripción.
-          </p>
+          {paymentPending ? (
+            <p style={{ fontSize: 14, color: "#F2B705", textAlign: "center" }}>
+              ⏳ Activando tu acceso premium... espera unos segundos.
+            </p>
+          ) : (
+            <>
+              <p style={{ marginBottom: 18, fontSize: 14, lineHeight: 1.5 }}>
+                Aprende los 4 casos del alemán con 163 palabras:{" "}
+                <strong style={{ color: "#F2EFE6" }}>der → den → dem → des</strong>.
+                Elige tu opción:
+              </p>
+              <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 14 }}>
+
+                {/* Pago único */}
+                <div style={{ background: "rgba(242,183,5,0.08)", border: "2px solid #F2B705", borderRadius: 12, padding: "16px 18px", minWidth: 150, textAlign: "center" }}>
+                  <div style={{ fontFamily: "'Oswald',sans-serif", fontSize: 11, letterSpacing: 1, color: "#F2B705", marginBottom: 4 }}>✅ PAGO ÚNICO</div>
+                  <div style={{ fontFamily: "'Oswald',sans-serif", fontSize: 30, fontWeight: 700, color: "#F2EFE6" }}>4,99€</div>
+                  <div style={{ fontSize: 13, color: "#F2EFE6", fontWeight: 600, marginTop: 4 }}>Una vez, para siempre</div>
+                  <div style={{ fontSize: 11, color: "#9C9787", marginBottom: 14, marginTop: 2 }}>Sin renovaciones. Sin suscripciones.</div>
+                  <button
+                    className="gda-btn-primary"
+                    style={{ width: "100%" }}
+                    onClick={() => {
+                      const url = `https://buy.stripe.com/test_eVq28q5Yr3hegG6b9Y4Rq00?client_reference_id=${userId}&prefilled_email=${encodeURIComponent(userEmail)}`;
+                      window.location.href = url;
+                    }}
+                  >
+                    Comprar acceso de por vida
+                  </button>
+                </div>
+
+                {/* Suscripción mensual */}
+                <div style={{ background: "rgba(255,255,255,0.04)", border: "2px solid rgba(255,255,255,0.18)", borderRadius: 12, padding: "16px 18px", minWidth: 150, textAlign: "center" }}>
+                  <div style={{ fontFamily: "'Oswald',sans-serif", fontSize: 11, letterSpacing: 1, color: "#9C9787", marginBottom: 4 }}>🔄 SUSCRIPCIÓN</div>
+                  <div style={{ fontFamily: "'Oswald',sans-serif", fontSize: 30, fontWeight: 700, color: "#F2EFE6" }}>0,99€</div>
+                  <div style={{ fontSize: 13, color: "#F2EFE6", fontWeight: 600, marginTop: 4 }}>Al mes</div>
+                  <div style={{ fontSize: 11, color: "#9C9787", marginBottom: 14, marginTop: 2 }}>Se renueva automáticamente cada mes.</div>
+                  <button
+                    className="gda-btn-primary"
+                    style={{ width: "100%", background: "transparent", border: "2px solid #F2B705", color: "#F2B705" }}
+                    onClick={() => {
+                      const url = `https://buy.stripe.com/test_4gMgJ0gD54li75w2Ds4Rq01?client_reference_id=${userId}&prefilled_email=${encodeURIComponent(userEmail)}`;
+                      window.location.href = url;
+                    }}
+                  >
+                    Suscribirse
+                  </button>
+                </div>
+
+              </div>
+              <p style={{ fontSize: 12, color: "#6b6760", textAlign: "center" }}>🔒 Pago seguro con Stripe</p>
+            </>
+          )}
         </div>
       )}
 

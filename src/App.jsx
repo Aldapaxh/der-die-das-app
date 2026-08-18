@@ -140,17 +140,29 @@ export default function App() {
       setProfile(null);
       return;
     }
+    loadProfile(session.user.id);
+  }, [session]);
+
+  async function loadProfile(userId) {
     setProfileLoading(true);
-    supabase
+    const { data } = await supabase
+      .from("profiles")
+      .select("is_premium")
+      .eq("id", userId)
+      .single();
+    setProfile(data || { is_premium: false });
+    setProfileLoading(false);
+  }
+
+  async function handleRefreshPremium() {
+    if (!session) return;
+    const { data } = await supabase
       .from("profiles")
       .select("is_premium")
       .eq("id", session.user.id)
-      .single()
-      .then(({ data }) => {
-        setProfile(data || { is_premium: false });
-        setProfileLoading(false);
-      });
-  }, [session]);
+      .single();
+    setProfile(data || { is_premium: false });
+  }
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -174,7 +186,9 @@ export default function App() {
         <ArticlesGame
           isPremium={profile?.is_premium || false}
           userEmail={session.user.email}
+          userId={session.user.id}
           onLogout={handleLogout}
+          onRefreshPremium={handleRefreshPremium}
         />
       )}
     </>
