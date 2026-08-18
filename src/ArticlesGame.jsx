@@ -1500,7 +1500,7 @@ export default function ArticlesGame({ isPremium, userEmail, userId, onLogout, o
           ) : (
             <>
               <p style={{ marginBottom: 18, fontSize: 14, lineHeight: 1.5 }}>
-                Aprende los 4 casos del alemán con 163 palabras:{" "}
+                Aprende los 4 casos del alemán con vocabulario real:{" "}
                 <strong style={{ color: "#F2EFE6" }}>der → den → dem → des</strong>.
                 Elige tu opción:
               </p>
