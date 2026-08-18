@@ -1516,7 +1516,7 @@ export default function ArticlesGame({ isPremium, userEmail, userId, onLogout, o
                     className="gda-btn-primary"
                     style={{ width: "100%" }}
                     onClick={() => {
-                      const url = `https://buy.stripe.com/test_eVq28q5Yr3hegG6b9Y4Rq00?client_reference_id=${userId}&prefilled_email=${encodeURIComponent(userEmail)}`;
+                      const url = `https://buy.stripe.com/aFaaEWdzU4GO5Bl5BqcIE00?client_reference_id=${userId}&prefilled_email=${encodeURIComponent(userEmail)}`;
                       window.location.href = url;
                     }}
                   >
@@ -1534,7 +1534,7 @@ export default function ArticlesGame({ isPremium, userEmail, userId, onLogout, o
                     className="gda-btn-primary"
                     style={{ width: "100%", background: "transparent", border: "2px solid #F2B705", color: "#F2B705" }}
                     onClick={() => {
-                      const url = `https://buy.stripe.com/test_4gMgJ0gD54li75w2Ds4Rq01?client_reference_id=${userId}&prefilled_email=${encodeURIComponent(userEmail)}`;
+                      const url = `https://buy.stripe.com/cNiaEW9jEb5cfbV1lacIE01?client_reference_id=${userId}&prefilled_email=${encodeURIComponent(userEmail)}`;
                       window.location.href = url;
                     }}
                   >
